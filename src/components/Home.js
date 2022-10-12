@@ -104,24 +104,50 @@ const addFormData = (event) => {
             setFlag3(true)
       }
       else{
-            const list = [...lists];
-            const items = {};
-            items.check = check;
-            items.check2 = check2;
-            items.check3 = check3;
-            items.check4 = check4;
-            items.name = name.current.value;
-            items.phone = phone.current.value;
-            items.email = email.current.value;
-            list.push(items)
-            setLists(list)
-            console.log(lists)
-            localStorage.setItem("token",JSON.stringify(lists));
-            setLoggedIn(true);
-            if(loggedIn){
-              return navigate('/thanks');
-            }
 
+      if(localStorage.length===0){
+                  const list = [...lists];
+                  const items = {};
+                  items.check = check;
+                  items.check2 = check2;
+                  items.check3 = check3;
+                  items.check4 = check4;
+                  items.name = name.current.value;
+                  items.phone = phone.current.value;
+                  items.email = email.current.value;
+                  list.push(items)
+                  console.log(lists)
+                  localStorage.setItem("token",JSON.stringify(list));
+                  setLoggedIn(true);
+                  if(loggedIn){
+                    return navigate('/thanks');
+                  }   
+      }
+            else{
+                  const get = JSON.parse(localStorage.getItem("token"))
+                  const list = [];
+                  var names = get.map(function(i) {
+                        list.push(i)
+                      });
+      
+                  const items = {};
+                  items.check = check;
+                  items.check2 = check2;
+                  items.check3 = check3;
+                  items.check4 = check4;
+                  items.name = name.current.value;
+                  items.phone = phone.current.value;
+                  items.email = email.current.value;
+
+                  list.push(items)
+                  console.log(list)
+                  localStorage.setItem("token",JSON.stringify(list));
+
+
+                    return navigate('/thanks');
+
+           
+      }
       }  
   }
 
@@ -135,7 +161,6 @@ const addFormData = (event) => {
             </div>
 
         <form style={innerbody2}
-         
           onSubmit={(event) => addFormData(event)}>  
             <div style={innerbody3}>
               <p style={label}>Customer Name <span style={{color:'red'}}>*</span></p>
@@ -293,7 +318,6 @@ const addFormData = (event) => {
             </div>
             <div>
             <input style={inputbtn}
-              className="mainbtn" 
               type="submit"
               value="Submit Review" />
               </div>

@@ -7,11 +7,21 @@ const Data = () => {
         marginTop:'200px',
         borderTop:'2px solid black'
     }
+    const inputbtn = {
+      background:'#77DD77',
+      color:'white',
+      padding:'10px',
+      borderRadius:'5px',
+      border: '1px solid #77DD77',
+      position:'absolute',
+      right:20,
+      top:'140px'
+}
     useEffect (() => {
       
         let retrievedData = localStorage.getItem("token");
         const arr = JSON.parse(retrievedData);
-        console.log(arr)
+      
         var names = arr.map(function(i) {
             return i
           });
@@ -19,8 +29,9 @@ const Data = () => {
       
     },[])
   
-    console.log(tokens)
   return (
+    <>
+    <button style={inputbtn}>Add New</button>
     <div style={datastyle}>
 
         <table class="table">
@@ -58,6 +69,7 @@ const Data = () => {
         </table>
 
     </div>
+    </>
   )
 }
 
