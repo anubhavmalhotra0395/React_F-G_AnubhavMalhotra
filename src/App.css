@@ -1,0 +1,12 @@
+body{
+  color:black;
+}
+.filter{
+  width: 20%;
+}
+input::placeholder {
+  font-size: 14px;
+  color:gray;
+  padding-left: 10px;
+}
+html, body { height: 100%; }
